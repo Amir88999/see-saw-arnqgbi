@@ -12,7 +12,7 @@
   <a-scene
     vr-mode-ui="enabled: false;"
     loading-screen="enabled: false;"
-    renderer="logarithmicDepthBuffer: true; antialias: true; shadowMapEnabled: true;"
+    renderer="logarithmicDepthBuffer: true; shadowMap: { enabled: true }"
     arjs="trackingMethod: best; sourceType: webcam; debugUIEnabled: false;"
     embedded
     gesture-detector
@@ -29,7 +29,7 @@
       rotation="-45 0 0"
     ></a-entity>
 
-    <!-- Shadow receiving plane -->
+    <!-- Shadow receiving plane (invisible but catches shadow) -->
     <a-entity 
       geometry="primitive: plane; width: 1; height: 1;"
       rotation="-90 0 0"
@@ -47,7 +47,7 @@
       cursor="fuse: false; rayOrigin: mouse;"
     >
       <a-entity
-        id="bowser-model"
+        id="model"
         gltf-model="#animated-asset"
         class="clickable"
         scale="0.010948706416283989 0.010948706416283989 0.010948706416283989"
@@ -80,7 +80,7 @@
 
   <script>
     const toggleBtn = document.getElementById("toggleAnimBtn");
-    const model = document.querySelector("#bowser-model");
+    const model = document.querySelector("#model");
 
     let isPaused = false;
     toggleBtn.addEventListener("click", () => {
