@@ -1,14 +1,54 @@
 <!doctype html>
 <html>
 <head>
+  <meta charset="UTF-8">
+  <title>See-Saw Karakuri AR</title>
   <script src="https://aframe.io/releases/1.0.4/aframe.min.js"></script>
   <script src="https://raw.githack.com/AR-js-org/AR.js/master/aframe/build/aframe-ar.js"></script>
   <script src="https://raw.githack.com/donmccurdy/aframe-extras/master/dist/aframe-extras.loaders.min.js"></script>
   <script src="https://raw.githack.com/AR-js-org/studio-backend/master/src/modules/marker/tools/gesture-detector.js"></script>
   <script src="https://raw.githack.com/AR-js-org/studio-backend/master/src/modules/marker/tools/gesture-handler.js"></script>
+  <style>
+    #trivia-box {
+      position: absolute;
+      top: 10px;
+      left: 10px;
+      max-width: 320px;
+      background-color: rgba(0, 0, 0, 0.5);
+      color: white;
+      font-size: 13px;
+      padding: 10px 14px;
+      border-radius: 8px;
+      z-index: 2;
+      line-height: 1.4em;
+    }
+
+    #toggleAnimBtn {
+      position: absolute;
+      bottom: 20px;
+      left: 50%;
+      transform: translateX(-50%);
+      z-index: 2;
+      padding: 10px 20px;
+      font-size: 16px;
+      border: none;
+      border-radius: 6px;
+      background-color: rgba(255,255,255,0.85);
+      color: black;
+      font-weight: bold;
+    }
+  </style>
 </head>
 
 <body style="margin: 0; overflow: hidden;">
+  <!-- Trivia Overlay -->
+  <div id="trivia-box">
+    <strong>See-Saw Karakuri:</strong><br>
+    A see-saw mechanism uses a lever that pivots around a central point. In Karakuri, it's often used to lift, drop, or alternate movement in response to gravity or weight change.<br><br>
+    This simple yet effective system helps transfer energy between points and is valued for how it cycles motion back and forth without needing motors.
+  </div>
+
+  <!-- AR Scene -->
   <a-scene
     vr-mode-ui="enabled: false;"
     loading-screen="enabled: false;"
@@ -50,7 +90,7 @@
         id="model"
         gltf-model="#animated-asset"
         class="clickable"
-        scale="0.010948706416283989 0.010948706416283989 0.010948706416283989"
+        scale="0.01095 0.01095 0.01095"
         animation-mixer="loop: repeat"
         gesture-handler
         shadow="cast: true"
@@ -61,22 +101,7 @@
   </a-scene>
 
   <!-- Pause Button -->
-  <button id="toggleAnimBtn" style="
-    position: absolute;
-    bottom: 20px;
-    left: 50%;
-    transform: translateX(-50%);
-    z-index: 2;
-    padding: 10px 20px;
-    font-size: 16px;
-    border: none;
-    border-radius: 6px;
-    background-color: rgba(255,255,255,0.8);
-    color: black;
-    font-weight: bold;
-  ">
-    Pause Animation
-  </button>
+  <button id="toggleAnimBtn">Pause Animation</button>
 
   <script>
     const toggleBtn = document.getElementById("toggleAnimBtn");
