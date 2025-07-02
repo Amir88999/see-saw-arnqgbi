@@ -10,21 +10,23 @@
   <script src="https://raw.githack.com/AR-js-org/studio-backend/master/src/modules/marker/tools/gesture-handler.js"></script>
   <style>
     #trivia-box {
-      position: absolute;
+      position: fixed; /* changed from absolute */
       top: 10px;
       left: 10px;
-      max-width: 320px;
-      background-color: rgba(0, 0, 0, 0.5);
+      right: 10px;
+      max-width: 360px;
+      background-color: rgba(0, 0, 0, 0.55);
       color: white;
       font-size: 13px;
       padding: 10px 14px;
       border-radius: 8px;
       z-index: 2;
       line-height: 1.4em;
+      pointer-events: none; /* ensures it won't block interaction */
     }
 
     #toggleAnimBtn {
-      position: absolute;
+      position: fixed;
       bottom: 20px;
       left: 50%;
       transform: translateX(-50%);
